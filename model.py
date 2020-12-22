@@ -1,4 +1,5 @@
 import sys
+import tensorflow as tf
 from keras import applications
 from keras.models import Model, load_model
 from keras.layers import Input, InputLayer, Conv2D, Activation, LeakyReLU, Concatenate
@@ -9,7 +10,7 @@ from loss import depth_loss_function
 
 def create_model(existing = ''):
     if len(existing) == 0:
-        base_model = applications.DenseNet169(input_shape = (None,None,3),include_top = False)
+        base_model = tf.keras.applications.DenseNet121(input_shape = (None,None,3),include_top = False)
         print('Base Model Loaded')
 
         base_model_opt_shape = base_model.layers[-1].output.shape

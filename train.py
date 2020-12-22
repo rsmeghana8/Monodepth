@@ -1,4 +1,4 @@
-import os, sys, glob, time, pathlib, argparse 
+import os, sys, glob, time, pathlib, argparse
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '5'
 
 from loss import depth_loss_function
