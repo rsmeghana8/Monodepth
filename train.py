@@ -56,4 +56,13 @@ if args.data == 'nyu': callbacks = get_callbacks(model, basemodel, train_generat
 
 model.fit_generator(train_generator, callbacks=callbacks, validation_data=test_generator, epochs=args.epochs, shuffle=True)
 
-basemodel.save('./densedepthmodel.h5')
+#basemodel.save('./densedepthmodel.h5')
+saved_model_dir = './'
+
+converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir)
+tflite_model = converter.convert()
+open("model.tflite", "wb").write(tflite_model)
+#converter.optimizations = [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]
+converter.post_training_quantize=True
+tflite_quantized_model=converter.convert()
+open("quantized_model.tflite", "wb").write(tflite_quantized_model
