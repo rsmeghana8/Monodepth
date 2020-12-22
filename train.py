@@ -65,4 +65,4 @@ open("model.tflite", "wb").write(tflite_model)
 #converter.optimizations = [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]
 converter.post_training_quantize=True
 tflite_quantized_model=converter.convert()
-open("quantized_model.tflite", "wb").write(tflite_quantized_model
+open("quantized_model.tflite", "wb").write(tflite_quantized_model)
